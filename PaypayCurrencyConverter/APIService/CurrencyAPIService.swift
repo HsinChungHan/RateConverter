@@ -7,28 +7,60 @@
 
 import Alamofire
 
+enum CurrencyAPIServiceError {
+    case URLNil
+    case ResponseError
+    case ModelParseError
+}
+
 class CurrencyAPIService {
     
     static let shared = CurrencyAPIService()
     
-    func getAllCurrencies() {
+    func getAllCurrencies(completionHandler: @escaping (APIResponseCurrencies) -> Void, errorHandler: @escaping (CurrencyAPIServiceError) -> Void) {
         guard let url = CurrencyRequest.getAllCurrencies.url else {
+            errorHandler(.URLNil)
             return
         }
         
         let request = AF.request(url)
-        request.responseJSON { (data) in
-            // - TODO: make model layer to parse and pass the data
+        request.responseDecodable(of: APIResponseCurrencies.self) { (response) in
+            if let error = response.error {
+                print("🚨 failed to get response! \(error)")
+                errorHandler(.ResponseError)
+                return
+            }
+            
+            guard let currencies = response.value else {
+                print("🚨 failed to get Currencies!")
+                errorHandler(.ModelParseError)
+                return
+            }
+            
+            completionHandler(currencies)
         }
     }
     
-    func getAllExchangeRstesRelateWithUSD() {
+    func getAllExchangeRstesRelateWithUSD(completionHandler: @escaping (APIResponseUSDRates) -> Void, errorHandler: @escaping (CurrencyAPIServiceError) -> Void) {
         guard let url = CurrencyRequest.getAllExchangeRstesRelateWithUSD.url else {
+            errorHandler(.URLNil)
             return
         }
         let request = AF.request(url)
-        request.responseJSON { (data) in
-            // - TODO: make model layer to parse and pass the data
+        request.responseDecodable(of: APIResponseUSDRates.self) { (response) in
+            if let error = response.error {
+                print("🚨 failed to get response! \(error)")
+                errorHandler(.ResponseError)
+                return
+            }
+            
+            guard let usdRates = response.value else {
+                print("🚨 failed to get Currencies!")
+                errorHandler(.ModelParseError)
+                return
+            }
+            
+            completionHandler(usdRates)
         }
     }
 }
