@@ -19,6 +19,8 @@
 		D19D821C25F387990074588C /* CurrencyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D821B25F387990074588C /* CurrencyAPIService.swift */; };
 		D19D822125F388340074588C /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D822025F388340074588C /* RequestType.swift */; };
 		D19D822625F389E00074588C /* CurrencyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D822525F389E00074588C /* CurrencyRequest.swift */; };
+		D19D824125F39ADB0074588C /* APIResponseCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D824025F39ADB0074588C /* APIResponseCurrencies.swift */; };
+		D19D824625F39B180074588C /* APIResponseUSDRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D824525F39B180074588C /* APIResponseUSDRates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		D19D821B25F387990074588C /* CurrencyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPIService.swift; sourceTree = "<group>"; };
 		D19D822025F388340074588C /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		D19D822525F389E00074588C /* CurrencyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRequest.swift; sourceTree = "<group>"; };
+		D19D824025F39ADB0074588C /* APIResponseCurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseCurrencies.swift; sourceTree = "<group>"; };
+		D19D824525F39B180074588C /* APIResponseUSDRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseUSDRates.swift; sourceTree = "<group>"; };
 		DA29EDBEF510C845FD321460 /* Pods-PaypayCurrencyConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaypayCurrencyConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-PaypayCurrencyConverterUITests/Pods-PaypayCurrencyConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E48826A35E9E4D36811B8CA6 /* Pods_PaypayCurrencyConverterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaypayCurrencyConverterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -133,6 +137,7 @@
 			children = (
 				D19D821A25F387750074588C /* APIService */,
 				D19D81C425F3838D0074588C /* AppDelegate.swift */,
+				D19D823725F39A470074588C /* Models */,
 				D19D81C625F3838D0074588C /* SceneDelegate.swift */,
 				D19D81CD25F3838F0074588C /* Assets.xcassets */,
 				D19D81CF25F3838F0074588C /* LaunchScreen.storyboard */,
@@ -167,6 +172,23 @@
 				D19D821B25F387990074588C /* CurrencyAPIService.swift */,
 			);
 			path = APIService;
+			sourceTree = "<group>";
+		};
+		D19D823725F39A470074588C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D19D825D25F3A0290074588C /* APIResponseModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D19D825D25F3A0290074588C /* APIResponseModels */ = {
+			isa = PBXGroup;
+			children = (
+				D19D824025F39ADB0074588C /* APIResponseCurrencies.swift */,
+				D19D824525F39B180074588C /* APIResponseUSDRates.swift */,
+			);
+			path = APIResponseModels;
 			sourceTree = "<group>";
 		};
 		FF3FD698CDC7CF32048A6EAD /* Frameworks */ = {
@@ -416,10 +438,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D19D824125F39ADB0074588C /* APIResponseCurrencies.swift in Sources */,
 				D19D81C525F3838D0074588C /* AppDelegate.swift in Sources */,
 				D19D821C25F387990074588C /* CurrencyAPIService.swift in Sources */,
 				D19D81C725F3838D0074588C /* SceneDelegate.swift in Sources */,
 				D19D822125F388340074588C /* RequestType.swift in Sources */,
+				D19D824625F39B180074588C /* APIResponseUSDRates.swift in Sources */,
 				D19D822625F389E00074588C /* CurrencyRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
