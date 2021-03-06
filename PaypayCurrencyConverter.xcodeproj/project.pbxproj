@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,8 +12,6 @@
 		C7B2867F3EC2FC19CCE40ACB /* Pods_PaypayCurrencyConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456DA87B6B67057FA8DFE8FF /* Pods_PaypayCurrencyConverter.framework */; };
 		D19D81C525F3838D0074588C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D81C425F3838D0074588C /* AppDelegate.swift */; };
 		D19D81C725F3838D0074588C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D81C625F3838D0074588C /* SceneDelegate.swift */; };
-		D19D81C925F3838D0074588C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D81C825F3838D0074588C /* ViewController.swift */; };
-		D19D81CC25F3838D0074588C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D19D81CA25F3838D0074588C /* Main.storyboard */; };
 		D19D81CE25F3838F0074588C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19D81CD25F3838F0074588C /* Assets.xcassets */; };
 		D19D81D125F3838F0074588C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D19D81CF25F3838F0074588C /* LaunchScreen.storyboard */; };
 		D19D81DC25F383900074588C /* PaypayCurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D81DB25F383900074588C /* PaypayCurrencyConverterTests.swift */; };
@@ -48,8 +46,6 @@
 		D19D81C125F3838D0074588C /* PaypayCurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaypayCurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19D81C425F3838D0074588C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D19D81C625F3838D0074588C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D19D81C825F3838D0074588C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D19D81CB25F3838D0074588C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D19D81CD25F3838F0074588C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D19D81D025F3838F0074588C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D19D81D225F3838F0074588C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,7 +97,6 @@
 				DA29EDBEF510C845FD321460 /* Pods-PaypayCurrencyConverterUITests.debug.xcconfig */,
 				8A79973F79CF4FC2A87D0753 /* Pods-PaypayCurrencyConverterUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -132,8 +127,6 @@
 			children = (
 				D19D81C425F3838D0074588C /* AppDelegate.swift */,
 				D19D81C625F3838D0074588C /* SceneDelegate.swift */,
-				D19D81C825F3838D0074588C /* ViewController.swift */,
-				D19D81CA25F3838D0074588C /* Main.storyboard */,
 				D19D81CD25F3838F0074588C /* Assets.xcassets */,
 				D19D81CF25F3838F0074588C /* LaunchScreen.storyboard */,
 				D19D81D225F3838F0074588C /* Info.plist */,
@@ -279,7 +272,6 @@
 			files = (
 				D19D81D125F3838F0074588C /* LaunchScreen.storyboard in Resources */,
 				D19D81CE25F3838F0074588C /* Assets.xcassets in Resources */,
-				D19D81CC25F3838D0074588C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +399,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D19D81C925F3838D0074588C /* ViewController.swift in Sources */,
 				D19D81C525F3838D0074588C /* AppDelegate.swift in Sources */,
 				D19D81C725F3838D0074588C /* SceneDelegate.swift in Sources */,
 			);
@@ -445,14 +436,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D19D81CA25F3838D0074588C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D19D81CB25F3838D0074588C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D19D81CF25F3838F0074588C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
