@@ -10,22 +10,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        CurrencyAPIService.shared.getAllCurrencies { (currencies) in
-            print(currencies.currencies)
-        } errorHandler: { (error) in
-            // handle error here
-        }
-
-        CurrencyAPIService.shared.getAllExchangeRstesRelateWithUSD { (usdRates) in
-            print(usdRates.timestamp)
-            print(usdRates.quotes)
-        } errorHandler: { (error) in
-            // handle error here
-        }
-
         return true
     }
 
