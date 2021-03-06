@@ -13,7 +13,7 @@ struct APIResponseUSDRates: Codable {
     let terms: String
     let privacy: String
     
-    let timestamp: Int
+    let timestamp: Double
     let source: String
     let quotes: [String: Float]
     

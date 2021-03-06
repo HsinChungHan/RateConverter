@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         CurrencyAPIService.shared.getAllExchangeRstesRelateWithUSD { (usdRates) in
+            print(usdRates.timestamp)
             print(usdRates.quotes)
         } errorHandler: { (error) in
             // handle error here
