@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Currencies {
+struct RateAndTimeStampCurrencies {
     let timeStamp: Double
-    let currencies: [Currencies]
+    var rateCurrencies: [RateCurrency]
 }

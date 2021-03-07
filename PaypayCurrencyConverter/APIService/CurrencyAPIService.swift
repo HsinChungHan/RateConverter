@@ -41,7 +41,7 @@ class CurrencyAPIService {
         }
     }
     
-    func getAllExchangeRstesRelateWithUSD(completionHandler: @escaping (APIResponseUSDRates) -> Void, errorHandler: @escaping (CurrencyAPIServiceError) -> Void) {
+    func getAllExchangeRatesRelateWithUSD(completionHandler: @escaping (APIResponseUSDRates) -> Void, errorHandler: @escaping (CurrencyAPIServiceError) -> Void) {
         guard let url = CurrencyRequest.getAllExchangeRstesRelateWithUSD.url else {
             errorHandler(.URLNil)
             return
