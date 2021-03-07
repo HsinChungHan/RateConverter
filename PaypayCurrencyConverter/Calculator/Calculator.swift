@@ -9,12 +9,12 @@ import Foundation
 
 class Calculator {
     
-    static func calculate(amountCurrency: AmountCurrency, formCurrency: RateCurrency, toCurrency: RateCurrency) -> Float {
+    static func calculate(amountCurrency: AmountCurrency, formRateCurrency: RateCurrency, toRateCurrency: RateCurrency) -> Float {
         switch amountCurrency.currencyType {
         case .USD:
-            return amountCurrency.amount * toCurrency.rate
+            return amountCurrency.amount * toRateCurrency.rate
         case .NonUSD:
-            return toCurrency.rate / formCurrency.rate * amountCurrency.amount
+            return toRateCurrency.rate / formRateCurrency.rate * amountCurrency.amount
         }
     }
 }

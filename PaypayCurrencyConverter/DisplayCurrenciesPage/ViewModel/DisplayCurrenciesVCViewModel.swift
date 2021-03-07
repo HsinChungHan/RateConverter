@@ -23,12 +23,19 @@ class DisplayCurrenciesVCViewModel {
             var displayCurrencies = [DisplayCurrency]()
             
             var usdRateCurrencies = RateAndTimeStampCurrencies(timeStamp: responseUSDRates.timestamp, rateCurrencies: [String: Float]())
-            for (key, value) in responseUSDRates.quotes {
+            
+            let fromRateCurrency = RateCurrency(abbreName: self.amountCurrency.abbreName, rate: responseUSDRates.quotes["USD\(self.amountCurrency.abbreName)"]!)
+            
+            for (key, rate) in responseUSDRates.quotes {
                 // -TODO: Not safe, "USDUSD" => ""; "XYUSDZ" => "XYZ"
                 let abbreName = key.replacingOccurrences(of: responseUSDRates.source, with: "")
-                usdRateCurrencies.rateCurrencies[abbreName] = value
-                displayCurrencies.append(DisplayCurrency(abbreName: abbreName))
+                usdRateCurrencies.rateCurrencies[abbreName] = rate
+                
+                let toRateCurrency = RateCurrency(abbreName: abbreName, rate: rate)
+                let displayCurrency = DisplayCurrency(amountCurrency: self.amountCurrency, fromRateCurrency: fromRateCurrency, toRateCurrency: toRateCurrency)
+                displayCurrencies.append(displayCurrency)
             }
+            
             self.bindableDisplayCurrencies.value = displayCurrencies
         } errorHandler: { _ in
             print("🚨 Failed to get allExchange rates relate with USD!")

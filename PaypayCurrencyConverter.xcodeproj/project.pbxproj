@@ -239,8 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				D19D831425F4B4440074588C /* Model */,
-				D19D82A425F490510074588C /* ExchangeCurrencyVC */,
-				D19D82A825F4905F0074588C /* ExchangeCurrencyVM */,
+				D19D82A425F490510074588C /* ViewController */,
+				D19D82A825F4905F0074588C /* ViewModel */,
 			);
 			path = CurrencyExchangePage;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 			path = CurrenciesPickerView;
 			sourceTree = "<group>";
 		};
-		D19D82A425F490510074588C /* ExchangeCurrencyVC */ = {
+		D19D82A425F490510074588C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				D19D828025F3D19E0074588C /* ExchangeCurrencyViewController.swift */,
@@ -271,24 +271,24 @@
 				D19D82BB25F491A40074588C /* ExchangeCurrencyVCWithCurrenciesPickerViewProtocol.swift */,
 				D19D830025F4A8080074588C /* ExchangeCurrencyVCWithDisplayCurrencyVCProtocol.swift */,
 			);
-			path = ExchangeCurrencyVC;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
-		D19D82A825F4905F0074588C /* ExchangeCurrencyVM */ = {
+		D19D82A825F4905F0074588C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				D19D828525F3D2360074588C /* ExchangeCurrencyVCViewModel.swift */,
 			);
-			path = ExchangeCurrencyVM;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D19D82DA25F497490074588C /* DisplayCurrenciesPage */ = {
 			isa = PBXGroup;
 			children = (
-				D19D82DB25F497640074588C /* DisplayCurrenciesViewController.swift */,
-				D19D82F325F4A0900074588C /* DisplayCurrencyCell.swift */,
-				D19D82E325F498F50074588C /* DisplayCurrenciesVCViewModel.swift */,
-				D19D82F825F4A1470074588C /* DisplayCurrency.swift */,
+				D19D832925F4C6B00074588C /* ViewController */,
+				D19D833125F4C6BE0074588C /* ViewModel */,
+				D19D832D25F4C6B70074588C /* Cell */,
+				D19D833525F4C6C90074588C /* Model */,
 			);
 			path = DisplayCurrenciesPage;
 			sourceTree = "<group>";
@@ -305,6 +305,38 @@
 			isa = PBXGroup;
 			children = (
 				D19D831525F4B4580074588C /* AmountCurrency.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D19D832925F4C6B00074588C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D19D82DB25F497640074588C /* DisplayCurrenciesViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D19D832D25F4C6B70074588C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D19D82F325F4A0900074588C /* DisplayCurrencyCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D19D833125F4C6BE0074588C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D19D82E325F498F50074588C /* DisplayCurrenciesVCViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D19D833525F4C6C90074588C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D19D82F825F4A1470074588C /* DisplayCurrency.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
