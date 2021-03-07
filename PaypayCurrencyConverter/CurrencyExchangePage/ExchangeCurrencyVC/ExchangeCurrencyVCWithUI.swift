@@ -1,65 +1,23 @@
 //
-//  ExchangeCurrencyViewController.swift
+//  ExchangeCurrencyVCWithUIExtension.swift
 //  PaypayCurrencyConverter
 //
-//  Created by Chung Han Hsin on 2021/3/6.
+//  Created by Chung Han Hsin on 2021/3/7.
 //
 
 import UIKit
-import SnapKit
-
-class ExchangeCurrencyViewController: UIViewController {
-
-    let viewModel = ExchangeCurrencyVCViewModel()
-    
-    lazy var inputAmountTextfiled = makeInputAmountTextfiled()
-    lazy var currencyLable = makeCurrencyLable()
-    lazy var exchangeCurrencyButton = makeExchangeCurrencyButton()
-    lazy var currenciesPickeView = makeCurrenciesPickeView()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        viewModel.fetchAllCurrencies()
-        bindViewModelToViewController()
-        setupLayout()
-    }
-}
 
 extension ExchangeCurrencyViewController {
-    
-    func bindAllCurrencies() {
-        viewModel.allCurrencies.bind {[weak self] (currencies) in
-            guard let _ = currencies else { return }
-            self?.currenciesPickeView.reloadView()
-        }
-    }
-    
-    func bindSelectedCurrency() {
-        viewModel.selectedCurrency.bind { [weak self] (currency) in
-            guard let currency = currency, let self = self else { return }
-            self.currencyLable.text = currency.abbreName
-            self.setIsUserInteractionEnable(button: self.exchangeCurrencyButton, isUserInteractionEnabled: self.viewModel.isSearchButtonEnable)
-        }
-    }
-    
-    func bindInputAmount() {
-        viewModel.inputAmount.bind { [weak self] (amount) in
-            guard let self = self else { return }
-            self.setIsUserInteractionEnable(button: self.exchangeCurrencyButton, isUserInteractionEnabled: self.viewModel.isSearchButtonEnable)
-        }
-    }
-    
-    func bindViewModelToViewController() {
-        bindAllCurrencies()
-        bindSelectedCurrency()
-        bindInputAmount()
-    }
     
     func makeInputAmountTextfiled() -> UITextField {
         let textField = UITextField()
         textField.placeholder = "Please type amount here!"
-        textField.delegate = self
+        textField.addTarget(self, action: #selector(inputAmountTextfieldDidChange(sender:)), for: .editingChanged)
         return textField
+    }
+    
+    @objc func inputAmountTextfieldDidChange(sender: UITextField) {
+        viewModel.inputAmount.value = Float.init(sender.text ?? "")
     }
     
     func makeCurrencyLable() -> UILabel {
@@ -122,7 +80,7 @@ extension ExchangeCurrencyViewController {
             $0.height.equalTo(50)
             $0.width.equalTo(UIScreen.main.bounds.width/2)
             $0.centerX.equalTo(view.snp.centerX)
-            $0.top.equalTo(currencyLable.snp.bottom).offset(10)
+            $0.top.equalTo(currencyLable.snp.bottom).offset(20)
         }
         
         currenciesPickeView.snp.makeConstraints {
@@ -131,31 +89,5 @@ extension ExchangeCurrencyViewController {
             $0.right.equalTo(view.snp.right)
             $0.bottom.equalTo(view.snp.bottom)
         }
-    }
-}
-
-extension ExchangeCurrencyViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // if string is "", then Float.init("") will return nil
-        viewModel.inputAmount.value = Float.init(string)
-        return true
-    }
-}
-
-extension ExchangeCurrencyViewController: CurrenciesPickerViewDataSource {
-    
-    func currenciesPickerViewCurrencies(_ currenciesPickerView: CurrenciesPickerView) -> [Currency]? {
-        guard let currencies = viewModel.allCurrencies.value else {
-            return nil
-        }
-        return currencies
-    }
-}
-
-extension ExchangeCurrencyViewController: CurrenciesPickerViewDelegate {
-    
-    func currenciesPickerViewDidSelectRow(_ currenciesPickerView: CurrenciesPickerView, selectedRow: Int, selectedCurrency: Currency) {
-        viewModel.selectedCurrency.value = selectedCurrency
     }
 }
