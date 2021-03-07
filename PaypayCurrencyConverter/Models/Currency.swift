@@ -11,5 +11,4 @@ struct Currency {
     
     let name: String
     let abbreName: String
-    let rate: Float?
 }

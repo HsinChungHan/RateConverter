@@ -26,7 +26,7 @@ class ExchangeCurrencyVCViewModel {
             let currencies = apiResponseCurrencies.currencies
             var allCurrencies = [Currency]()
             for (abbreName, name) in currencies {
-                let currency = Currency(name: name, abbreName: abbreName, rate: nil)
+                let currency = Currency(name: name, abbreName: abbreName)
                 allCurrencies.append(currency)
             }
             self.allCurrencies.value = allCurrencies
