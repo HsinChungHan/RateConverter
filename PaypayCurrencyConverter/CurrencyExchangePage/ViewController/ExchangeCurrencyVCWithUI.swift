@@ -46,7 +46,6 @@ extension ExchangeCurrencyViewController {
     }
     
     @objc func pressExchangeCurrencyButton(sender: UIButton) {
-        // press exchange currency button...
         let displayCurrenciesVC = DisplayCurrenciesViewController(displayCurrenciesViewControllerDataSource: self)
         self.present(displayCurrenciesVC, animated: true)
     }

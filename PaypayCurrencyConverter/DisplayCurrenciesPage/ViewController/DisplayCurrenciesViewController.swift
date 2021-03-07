@@ -9,9 +9,7 @@ import UIKit
 
 protocol DisplayCurrenciesViewControllerDataSource: AnyObject {
     
-    func displayCurrenciesViewControllerCurrency(_ displayCurrenciesViewController: DisplayCurrenciesViewController) -> Currency
-    
-    func displayCurrenciesViewControllerAmount(_ displayCurrenciesViewController: DisplayCurrenciesViewController) -> Float
+    func displayCurrenciesViewControllerAmountCurrency(_ displayCurrenciesViewController: DisplayCurrenciesViewController) -> AmountCurrency
 }
 
 class DisplayCurrenciesViewController: UIViewController {
@@ -34,7 +32,7 @@ class DisplayCurrenciesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let dataSource = dataSource else { return }
-        vm = DisplayCurrenciesVCViewModel(amount: dataSource.displayCurrenciesViewControllerAmount(self), currency: dataSource.displayCurrenciesViewControllerCurrency(self))
+        vm = DisplayCurrenciesVCViewModel(amountCurrency: dataSource.displayCurrenciesViewControllerAmountCurrency(self))
         vm?.fetchCurrenciesWithUSDRate()
         registerTableViewCell()
         setupLayout()

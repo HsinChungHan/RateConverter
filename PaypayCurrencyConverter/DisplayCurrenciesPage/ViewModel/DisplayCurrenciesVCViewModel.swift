@@ -9,12 +9,10 @@ import Foundation
 
 class DisplayCurrenciesVCViewModel {
     
-    let amount: Float
-    let currency: Currency
+    let amountCurrency: AmountCurrency
     
-    init(amount: Float, currency: Currency) {
-        self.amount = amount
-        self.currency = currency
+    init(amountCurrency: AmountCurrency) {
+        self.amountCurrency = amountCurrency
     }
     
     let bindableDisplayCurrencies = Bindable<[DisplayCurrency]>.init(value: nil)
@@ -24,13 +22,20 @@ class DisplayCurrenciesVCViewModel {
             guard let self = self else { return }
             var displayCurrencies = [DisplayCurrency]()
             
-            var usdRateCurrencies = RateAndTimeStampCurrencies(timeStamp: responseUSDRates.timestamp, rateCurrencies: [RateCurrency]())
-            for (key, value) in responseUSDRates.quotes {
+            var usdRateCurrencies = RateAndTimeStampCurrencies(timeStamp: responseUSDRates.timestamp, rateCurrencies: [String: Float]())
+            
+            let fromRateCurrency = RateCurrency(abbreName: self.amountCurrency.abbreName, rate: responseUSDRates.quotes["USD\(self.amountCurrency.abbreName)"]!)
+            
+            for (key, rate) in responseUSDRates.quotes {
                 // -TODO: Not safe, "USDUSD" => ""; "XYUSDZ" => "XYZ"
                 let abbreName = key.replacingOccurrences(of: responseUSDRates.source, with: "")
-                usdRateCurrencies.rateCurrencies.append(RateCurrency(abbreName: abbreName, rate: value))
-                displayCurrencies.append(DisplayCurrency(abbreName: abbreName))
+                usdRateCurrencies.rateCurrencies[abbreName] = rate
+                
+                let toRateCurrency = RateCurrency(abbreName: abbreName, rate: rate)
+                let displayCurrency = DisplayCurrency(amountCurrency: self.amountCurrency, fromRateCurrency: fromRateCurrency, toRateCurrency: toRateCurrency)
+                displayCurrencies.append(displayCurrency)
             }
+            
             self.bindableDisplayCurrencies.value = displayCurrencies
         } errorHandler: { _ in
             print("🚨 Failed to get allExchange rates relate with USD!")
