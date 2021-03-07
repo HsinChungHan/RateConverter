@@ -27,15 +27,6 @@ extension ExchangeCurrencyViewController {
         return label
     }
     
-    func makeExchangeCurrencyButton() -> UIButton {
-        let button = UIButton(type: .system)
-        button.setTitle("Exchange currency!", for: .normal)
-        button.addTarget(self, action: #selector(pressExchangeCurrencyButton(sender:)), for: .touchUpInside)
-        button.setTitleColor(.white, for: .normal)
-        setIsUserInteractionEnable(button: button, isUserInteractionEnabled: false)
-        return button
-    }
-    
     func setIsUserInteractionEnable(button: UIButton, isUserInteractionEnabled: Bool) {
         button.isUserInteractionEnabled = isUserInteractionEnabled
         if isUserInteractionEnabled {
@@ -45,9 +36,17 @@ extension ExchangeCurrencyViewController {
         }
     }
     
+    func makeExchangeCurrencyButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle("Exchange currency!", for: .normal)
+        button.addTarget(self, action: #selector(pressExchangeCurrencyButton(sender:)), for: .touchUpInside)
+        button.setTitleColor(.white, for: .normal)
+        setIsUserInteractionEnable(button: button, isUserInteractionEnabled: false)
+        return button
+    }
+    
     @objc func pressExchangeCurrencyButton(sender: UIButton) {
-        let displayCurrenciesVC = DisplayCurrenciesViewController(displayCurrenciesViewControllerDataSource: self)
-        self.present(displayCurrenciesVC, animated: true)
+        flowDelegate?.exchangeCurrencyViewControllerFlowDelegateGoToDisplayCurrenciesViewModel(self, amountCurrency: viewModel.amountCurrency)
     }
     
     func makeCurrenciesPickeView() -> CurrenciesPickerView {
