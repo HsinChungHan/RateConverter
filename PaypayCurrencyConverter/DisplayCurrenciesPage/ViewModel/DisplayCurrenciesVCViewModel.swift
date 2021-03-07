@@ -27,8 +27,7 @@ class DisplayCurrenciesVCViewModel {
                 var currenciesRelativeWithUSDRate = [String:Float]()
                 
                 for (key, value) in responseUSDRates.currenciesRate {
-                    // -TODO: Not safe, "USDUSD" => ""; "XYUSDZ" => "XYZ"
-                    let abbreName = key.replacingOccurrences(of: responseUSDRates.source, with: "")
+                    let abbreName = key.toAbbreName(source: responseUSDRates.source)
                     currenciesRelativeWithUSDRate[abbreName] = value
                 }
                 
