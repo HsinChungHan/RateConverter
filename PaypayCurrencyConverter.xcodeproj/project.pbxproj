@@ -22,7 +22,7 @@
 		D19D824125F39ADB0074588C /* APIResponseCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D824025F39ADB0074588C /* APIResponseCurrencies.swift */; };
 		D19D824625F39B180074588C /* APIResponseUSDRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D824525F39B180074588C /* APIResponseUSDRates.swift */; };
 		D19D827025F3A2C00074588C /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D826F25F3A2C00074588C /* Currency.swift */; };
-		D19D827525F3A2F70074588C /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D827425F3A2F70074588C /* Currencies.swift */; };
+		D19D827525F3A2F70074588C /* RateAndTimeStampCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D827425F3A2F70074588C /* RateAndTimeStampCurrencies.swift */; };
 		D19D828125F3D19E0074588C /* ExchangeCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D828025F3D19E0074588C /* ExchangeCurrencyViewController.swift */; };
 		D19D828625F3D2360074588C /* ExchangeCurrencyVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D828525F3D2360074588C /* ExchangeCurrencyVCViewModel.swift */; };
 		D19D828B25F3D2640074588C /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D828A25F3D2640074588C /* Bindable.swift */; };
@@ -84,7 +84,7 @@
 		D19D824025F39ADB0074588C /* APIResponseCurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseCurrencies.swift; sourceTree = "<group>"; };
 		D19D824525F39B180074588C /* APIResponseUSDRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseUSDRates.swift; sourceTree = "<group>"; };
 		D19D826F25F3A2C00074588C /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		D19D827425F3A2F70074588C /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
+		D19D827425F3A2F70074588C /* RateAndTimeStampCurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAndTimeStampCurrencies.swift; sourceTree = "<group>"; };
 		D19D828025F3D19E0074588C /* ExchangeCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCurrencyViewController.swift; sourceTree = "<group>"; };
 		D19D828525F3D2360074588C /* ExchangeCurrencyVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCurrencyVCViewModel.swift; sourceTree = "<group>"; };
 		D19D828A25F3D2640074588C /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 			children = (
 				D19D825D25F3A0290074588C /* APIResponseModels */,
 				D19D826F25F3A2C00074588C /* Currency.swift */,
-				D19D827425F3A2F70074588C /* Currencies.swift */,
+				D19D827425F3A2F70074588C /* RateAndTimeStampCurrencies.swift */,
 				D19D82E825F49B1C0074588C /* RateCurrency.swift */,
 			);
 			path = Models;
@@ -562,7 +562,7 @@
 				D19D82F425F4A0900074588C /* DisplayCurrencyCell.swift in Sources */,
 				D19D82AD25F490CE0074588C /* ExchangeCurrencyVCWithBindable.swift in Sources */,
 				D19D831025F4B3A30074588C /* Calculator.swift in Sources */,
-				D19D827525F3A2F70074588C /* Currencies.swift in Sources */,
+				D19D827525F3A2F70074588C /* RateAndTimeStampCurrencies.swift in Sources */,
 				D19D82DC25F497640074588C /* DisplayCurrenciesViewController.swift in Sources */,
 				D19D824125F39ADB0074588C /* APIResponseCurrencies.swift in Sources */,
 				D19D82BC25F491A40074588C /* ExchangeCurrencyVCWithCurrenciesPickerViewProtocol.swift in Sources */,

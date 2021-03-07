@@ -22,11 +22,11 @@ class DisplayCurrenciesVCViewModel {
             guard let self = self else { return }
             var displayCurrencies = [DisplayCurrency]()
             
-            var usdRateCurrencies = RateAndTimeStampCurrencies(timeStamp: responseUSDRates.timestamp, rateCurrencies: [RateCurrency]())
+            var usdRateCurrencies = RateAndTimeStampCurrencies(timeStamp: responseUSDRates.timestamp, rateCurrencies: [String: Float]())
             for (key, value) in responseUSDRates.quotes {
                 // -TODO: Not safe, "USDUSD" => ""; "XYUSDZ" => "XYZ"
                 let abbreName = key.replacingOccurrences(of: responseUSDRates.source, with: "")
-                usdRateCurrencies.rateCurrencies.append(RateCurrency(abbreName: abbreName, rate: value))
+                usdRateCurrencies.rateCurrencies[abbreName] = value
                 displayCurrencies.append(DisplayCurrency(abbreName: abbreName))
             }
             self.bindableDisplayCurrencies.value = displayCurrencies

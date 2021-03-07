@@ -10,5 +10,5 @@ import Foundation
 struct RateAndTimeStampCurrencies {
     
     let timeStamp: Double
-    var rateCurrencies: [RateCurrency]
+    var rateCurrencies: [String: Float]
 }
