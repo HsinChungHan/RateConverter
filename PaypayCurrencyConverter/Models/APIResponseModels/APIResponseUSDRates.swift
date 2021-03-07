@@ -15,7 +15,7 @@ struct APIResponseUSDRates: Codable {
     
     let timestamp: Double
     let source: String
-    let quotes: [String: Float]
+    let currenciesRate: [String: Float]
     
     private enum CodingKeys: String, CodingKey {
         case success
@@ -23,6 +23,6 @@ struct APIResponseUSDRates: Codable {
         case privacy
         case timestamp
         case source
-        case quotes
+        case currenciesRate = "quotes"
     }
 }

@@ -34,17 +34,24 @@ class ExchangeCurrencyVCViewModel {
     }
     
     func fetchAllCurrencies() {
-        CurrencyAPIService.shared.getAllCurrencies { [weak self] (apiResponseCurrencies) in
-            guard let self = self else { return }
-            let currencies = apiResponseCurrencies.currencies
-            var allCurrencies = [Currency]()
-            for (abbreName, name) in currencies {
-                let currency = Currency(name: name, abbreName: abbreName)
-                allCurrencies.append(currency)
+        // case1: currencies in UserDefault -> get currencies from UserDefault
+        // case2: currencies is not in UserDefault -> get currencies from API and save into UserDefault
+        guard let currencies = DownloadManager.shared.getCurrencies() else {
+            CurrencyAPIService.shared.getAllCurrencies { [weak self] (apiResponseCurrencies) in
+                guard let self = self else { return }
+                let apiCurrencies = apiResponseCurrencies.currencies
+                var currencies = [Currency]()
+                for (abbreName, name) in apiCurrencies {
+                    let currency = Currency(name: name, abbreName: abbreName)
+                    currencies.append(currency)
+                }
+                self.allCurrencies.value = currencies
+                DownloadManager.shared.saveCurrencies(currencies: currencies)
+            } errorHandler: { _ in
+                print("🚨 Failed to get all currencies in ExchangeCurrencyVCViewModel!")
             }
-            self.allCurrencies.value = allCurrencies
-        } errorHandler: { _ in
-            print("🚨 Failed to get all currencies in ExchangeCurrencyVCViewModel!")
+            return
         }
+        self.allCurrencies.value = currencies
     }
 }

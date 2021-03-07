@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct RateAndTimeStampCurrencies {
+struct RateAndTimeStampCurrencies: Codable {
     
     let timeStamp: Double
-    var rateCurrencies: [String: Float]
+    var relativeWithUSDRates = [String: Float]()
 }

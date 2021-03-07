@@ -33,7 +33,7 @@ class DisplayCurrenciesViewController: UIViewController {
         super.viewDidLoad()
         guard let dataSource = dataSource else { return }
         vm = DisplayCurrenciesVCViewModel(amountCurrency: dataSource.displayCurrenciesViewControllerAmountCurrency(self))
-        vm?.fetchCurrenciesWithUSDRate()
+        vm?.fetchRateAndTimeStampCurrencies()
         registerTableViewCell()
         setupLayout()
         bindBindableDisplayCurrencies()
