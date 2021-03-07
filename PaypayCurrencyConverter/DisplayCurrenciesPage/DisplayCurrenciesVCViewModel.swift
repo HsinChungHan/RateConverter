@@ -9,12 +9,10 @@ import Foundation
 
 class DisplayCurrenciesVCViewModel {
     
-    let amount: Float
-    let currency: Currency
+    let amountCurrency: AmountCurrency
     
-    init(amount: Float, currency: Currency) {
-        self.amount = amount
-        self.currency = currency
+    init(amountCurrency: AmountCurrency) {
+        self.amountCurrency = amountCurrency
     }
     
     let bindableDisplayCurrencies = Bindable<[DisplayCurrency]>.init(value: nil)

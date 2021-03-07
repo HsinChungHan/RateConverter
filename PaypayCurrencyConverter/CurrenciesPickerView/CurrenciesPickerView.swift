@@ -61,7 +61,6 @@ extension CurrenciesPickerView: UIPickerViewDataSource {
             let dataSource = currenciesPickerViewDataSource,
             let currencies = dataSource.currenciesPickerViewCurrencies(self)
         else {
-            print("🚨 You have to set currenciesPickerViewDataSource for CurrenciesPickerView!")
             return 0
         }
         return currencies.count
@@ -72,7 +71,6 @@ extension CurrenciesPickerView: UIPickerViewDataSource {
             let dataSource = currenciesPickerViewDataSource,
             let currencies = dataSource.currenciesPickerViewCurrencies(self)
         else {
-            print("🚨 You have to set currenciesPickerViewDataSource for CurrenciesPickerView!")
             return nil
         }
         return currencies[row].name
@@ -82,18 +80,11 @@ extension CurrenciesPickerView: UIPickerViewDataSource {
 extension CurrenciesPickerView: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let dataSource = currenciesPickerViewDataSource else {
-            print("🚨 You have to set currenciesPickerViewDataSource for CurrenciesPickerView!")
-            return
-        }
-        
-        guard let currencies = dataSource.currenciesPickerViewCurrencies(self) else {
-            print("🚨 You have to set currencies for CurrenciesPickerViewDataSource!")
-            return
-        }
-        
-        guard let delegate = currenciesPickerViewDelegate else {
-            print("🚨 You have to set currenciesPickerViewDelegate for CurrenciesPickerView!")
+        guard
+            let dataSource = currenciesPickerViewDataSource,
+            let currencies = dataSource.currenciesPickerViewCurrencies(self),
+            let delegate = currenciesPickerViewDelegate
+        else {
             return
         }
         
