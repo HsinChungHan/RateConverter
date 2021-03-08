@@ -50,6 +50,8 @@ class TestDownloadManager: XCTestCase {
         rate2 = nil
         currencies = nil
         rateAndTimeStampCurrenciesWithExceedTime = nil
+        DownloadManager.shared.deleteCurrencies()
+        DownloadManager.shared.deleteRateAndTimestampCurrencies()
         super.tearDown()
     }
     

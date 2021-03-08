@@ -29,6 +29,8 @@ class TestDisplayCurrenciesVCViewModel: XCTestCase {
         mockViewModel = nil
         rateAndTimeStampCurrenciesWithExceedTime = nil
         rateAndTimeStampCurrenciesWithCurrentTime = nil
+        DownloadManager.shared.deleteCurrencies()
+        DownloadManager.shared.deleteRateAndTimestampCurrencies()
         super.tearDown()
     }
     
