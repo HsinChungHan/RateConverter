@@ -46,6 +46,7 @@
 		D19D83A225F616F30074588C /* TestTimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D83A125F616F30074588C /* TestTimeIntervalExtension.swift */; };
 		D19D83A725F622870074588C /* TestStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D83A625F622870074588C /* TestStringExtension.swift */; };
 		D19D83AC25F624290074588C /* TestCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D83AB25F624290074588C /* TestCalculator.swift */; };
+		D19D83C125F62F0B0074588C /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = D19D83C025F62F0B0074588C /* Config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		D19D83A125F616F30074588C /* TestTimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTimeIntervalExtension.swift; sourceTree = "<group>"; };
 		D19D83A625F622870074588C /* TestStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStringExtension.swift; sourceTree = "<group>"; };
 		D19D83AB25F624290074588C /* TestCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCalculator.swift; sourceTree = "<group>"; };
+		D19D83C025F62F0B0074588C /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		DA29EDBEF510C845FD321460 /* Pods-PaypayCurrencyConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaypayCurrencyConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-PaypayCurrencyConverterUITests/Pods-PaypayCurrencyConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E48826A35E9E4D36811B8CA6 /* Pods_PaypayCurrencyConverterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaypayCurrencyConverterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -187,6 +189,7 @@
 			children = (
 				D19D81C425F3838D0074588C /* AppDelegate.swift */,
 				D19D81C625F3838D0074588C /* SceneDelegate.swift */,
+				D19D83C025F62F0B0074588C /* Config.plist */,
 				D19D835E25F53CD20074588C /* Coordinator */,
 				D19D833F25F4F75D0074588C /* DownloadManager */,
 				D19D830E25F4AED40074588C /* Calculator */,
@@ -497,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19D81D125F3838F0074588C /* LaunchScreen.storyboard in Resources */,
+				D19D83C125F62F0B0074588C /* Config.plist in Resources */,
 				D19D81CE25F3838F0074588C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

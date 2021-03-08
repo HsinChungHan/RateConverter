@@ -38,7 +38,16 @@ extension RequestType {
     }
     
     var accessKey: String {
-        return "7a1ab2a10e996725a6e8d68d199290a9"
+        guard
+            let path = Bundle.main.path(forResource: "Config", ofType: "plist"),
+            let config = NSDictionary(contentsOfFile: path),
+            let accessKey = config["AccessKey"] as? String
+        else {
+            print("🚨 You have to apply a new access key and save it into Config.plist")
+            // This access key will be aborted in the real world.
+            return "7a1ab2a10e996725a6e8d68d199290a9"
+        }
+        return accessKey
     }
     
     var url: URL? {
