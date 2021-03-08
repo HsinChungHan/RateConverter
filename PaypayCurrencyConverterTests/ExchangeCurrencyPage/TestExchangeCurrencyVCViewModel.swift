@@ -28,7 +28,6 @@ class TestExchangeCurrencyVCViewModel: XCTestCase {
     }
     
     override func tearDown() {
-        super.tearDown()
         viewModel = nil
         currencyName = nil
         abbreName = nil
@@ -36,6 +35,7 @@ class TestExchangeCurrencyVCViewModel: XCTestCase {
         selectedCurrency = nil
         mockViewModel = nil
         savedCurrencies = nil
+        super.tearDown()
     }
     
     func testAmountCurrency() {

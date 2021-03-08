@@ -85,7 +85,7 @@ class DownloadManager {
         return rateAndTimeStampCurrencies
     }
     
-    func deleteRateAndTimeStampCurrenciesWithTimestamp() {
+    func deleteRateAndTimestampCurrencies() {
         UserDefaults.standard.set(nil, forKey: DownloadManager.downloadRateAndTimeStampCurrenciesKey)
     }
 }
