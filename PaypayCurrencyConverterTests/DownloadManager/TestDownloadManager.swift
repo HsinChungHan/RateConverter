@@ -155,7 +155,7 @@ class TestDownloadManager: XCTestCase {
     }
     
     func testDeleteRateAndTimeStampCurrenciesWithTimeInterval() {
-        DownloadManager.shared.deleteRateAndTimeStampCurrenciesWithTimestamp()
+        DownloadManager.shared.deleteRateAndTimestampCurrencies()
         XCTAssertNil(DownloadManager.shared.getRateAndTimeStampCurrenciesWithTimestamp())
     }
 }

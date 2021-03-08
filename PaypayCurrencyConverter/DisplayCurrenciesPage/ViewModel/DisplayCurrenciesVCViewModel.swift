@@ -11,8 +11,11 @@ class DisplayCurrenciesVCViewModel {
     
     let amountCurrency: AmountCurrency
     
-    init(amountCurrency: AmountCurrency) {
+    private var service: CurrencyAPIServiceProtocol
+    
+    init(amountCurrency: AmountCurrency, service: CurrencyAPIServiceProtocol = CurrencyAPIService.shared) {
         self.amountCurrency = amountCurrency
+        self.service = service
     }
     
     let bindableDisplayCurrencies = Bindable<[DisplayCurrency]>.init(value: nil)
@@ -26,7 +29,7 @@ class DisplayCurrenciesVCViewModel {
         }
         
         // case2: rateAndTimeStampCurrencies is not in UserDefault -> get rateAndTimeStampCurrencies from API and save into UserDefault
-        CurrencyAPIService.shared.getAllExchangeRatesRelateWithUSD { [weak self] (responseUSDRates) in
+        service.getAllExchangeRatesRelateWithUSD { [weak self] (responseUSDRates) in
             guard let self = self else { return }
             
             let currenciesRelativeWithUSDRate = self.makeCurrenciesRelativeWithUSDRate(responseUSDRates: responseUSDRates)

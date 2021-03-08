@@ -13,6 +13,12 @@ class ExchangeCurrencyVCViewModel {
     let selectedCurrency = Bindable<Currency>.init(value: nil)
     let inputAmount = Bindable<Float>.init(value: nil)
     
+    private var service: CurrencyAPIServiceProtocol
+    
+    init(service: CurrencyAPIServiceProtocol = CurrencyAPIService.shared) {
+        self.service = service
+    }
+    
     var amountCurrency: AmountCurrency {
         guard
             let currency = selectedCurrency.value,
@@ -41,7 +47,7 @@ class ExchangeCurrencyVCViewModel {
         }
         
         // case2: currencies is not in UserDefault -> get currencies from API and save into UserDefault
-        CurrencyAPIService.shared.getAllCurrencies { [weak self] (apiResponseCurrencies) in
+        service.getAllCurrencies { [weak self] (apiResponseCurrencies) in
             guard let self = self else { return }
             let apiCurrencies = apiResponseCurrencies.currencies
             var currencies = [Currency]()

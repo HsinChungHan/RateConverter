@@ -13,7 +13,13 @@ enum CurrencyAPIServiceError {
     case ModelParseError
 }
 
-class CurrencyAPIService {
+protocol CurrencyAPIServiceProtocol {
+    
+    func getAllCurrencies(completionHandler: @escaping (APIResponseCurrencies) -> Void, errorHandler: @escaping (CurrencyAPIServiceError) -> Void)
+    func getAllExchangeRatesRelateWithUSD(completionHandler: @escaping (APIResponseUSDRates) -> Void, errorHandler: @escaping (CurrencyAPIServiceError) -> Void)
+}
+
+class CurrencyAPIService: CurrencyAPIServiceProtocol {
     
     static let shared = CurrencyAPIService()
     
