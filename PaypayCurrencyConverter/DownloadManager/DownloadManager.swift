@@ -52,13 +52,12 @@ class DownloadManager {
         }
     }
     
-    func getRateAndTimeStampCurrencies() -> RateAndTimeStampCurrencies? {
+    func getRateAndTimeStampCurrencies(refreshedMinutes: Double=30) -> RateAndTimeStampCurrencies? {
         guard let data = UserDefaults.standard.data(forKey: DownloadManager.downloadRateAndTimeStampCurrenciesKey) else { return nil }
         
         do {
             let result = try JSONDecoder().decode(RateAndTimeStampCurrencies.self, from: data)
-            // - TODO: make 60 * 30 as a variable
-            if isExceedTime(timestamp: result.timeStamp, targetTime: 60 * 30) {
+            if TimeInterval(result.timeStamp).isExceed() {
                 return nil
             }
             print("Successfully get RateAndTimeStampCurrencies!")
@@ -68,18 +67,5 @@ class DownloadManager {
         }
         
         return nil
-    }
-    
-    // - TODO: make a time manager to calculate time
-    fileprivate func isExceedTime(timestamp: Double, targetTime: Double) -> Bool {
-        let interval = TimeInterval.init(timestamp)
-        let date = Date(timeIntervalSince1970: interval)
-        var timeInterval = date.timeIntervalSinceNow
-        timeInterval = -timeInterval
-        
-        if timeInterval > targetTime {
-            return true
-        }
-        return false
     }
 }
