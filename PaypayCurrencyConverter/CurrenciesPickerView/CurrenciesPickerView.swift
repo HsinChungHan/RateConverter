@@ -13,6 +13,7 @@ protocol CurrenciesPickerViewDataSource: AnyObject {
 }
 
 protocol CurrenciesPickerViewDelegate: AnyObject {
+    
     func currenciesPickerViewDidSelectRow(_ currenciesPickerView: CurrenciesPickerView, selectedRow: Int, selectedCurrency: Currency)
 }
 
