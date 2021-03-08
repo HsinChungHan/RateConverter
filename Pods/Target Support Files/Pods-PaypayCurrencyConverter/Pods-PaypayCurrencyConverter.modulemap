@@ -1,0 +1,6 @@
+framework module Pods_PaypayCurrencyConverter {
+  umbrella header "Pods-PaypayCurrencyConverter-umbrella.h"
+
+  export *
+  module * { export * }
+}
