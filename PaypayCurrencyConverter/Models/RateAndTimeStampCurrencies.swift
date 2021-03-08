@@ -9,6 +9,6 @@ import Foundation
 
 struct RateAndTimeStampCurrencies: Codable {
     
-    let timeStamp: Double
+    let savedTimestamp: Double
     var relativeWithUSDRates = [String: Float]()
 }
