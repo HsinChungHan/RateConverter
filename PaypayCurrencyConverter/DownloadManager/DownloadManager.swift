@@ -12,7 +12,6 @@ class DownloadManager {
     static let shared = DownloadManager()
     static let downloadCurrenciesKey = "downloadCurrenciesKey"
     static let downloadRateAndTimeStampCurrenciesKey = "downloadRateAndTimeStampCurrenciesKey"
-    static let downloadTimeStampKey = "downloadTimeStampKey"
     
     private init() {}
     
@@ -42,6 +41,10 @@ class DownloadManager {
         return nil
     }
     
+    func deleteCurrencies() {
+        UserDefaults.standard.set(nil, forKey: DownloadManager.downloadCurrenciesKey)
+    }
+    
     func saveRateAndTimeStampCurrencies(rateAndTimeStampCurrencies: RateAndTimeStampCurrencies) {
         do {
             let data = try JSONEncoder().encode(rateAndTimeStampCurrencies)
@@ -52,14 +55,16 @@ class DownloadManager {
         }
     }
     
-    func getRateAndTimeStampCurrencies(refreshedMinutes: Double=30) -> RateAndTimeStampCurrencies? {
-        guard let data = UserDefaults.standard.data(forKey: DownloadManager.downloadRateAndTimeStampCurrenciesKey) else { return nil }
+    func getRateAndTimeStampCurrencies() -> RateAndTimeStampCurrencies? {
+        guard
+            let data = UserDefaults.standard.data(forKey: DownloadManager.downloadRateAndTimeStampCurrenciesKey)
+        else {
+            print("Failed to get RateAndTimeStampCurrencies from UserDefaults!")
+            return nil
+        }
         
         do {
             let result = try JSONDecoder().decode(RateAndTimeStampCurrencies.self, from: data)
-            if TimeInterval(result.timeStamp).isExceed() {
-                return nil
-            }
             print("Successfully get RateAndTimeStampCurrencies!")
             return result
         } catch let decodeErr {
@@ -67,5 +72,20 @@ class DownloadManager {
         }
         
         return nil
+    }
+    
+    func getRateAndTimeStampCurrenciesWithTimestamp() -> RateAndTimeStampCurrencies? {
+        guard let rateAndTimeStampCurrencies = getRateAndTimeStampCurrencies() else {
+            return nil
+        }
+        
+        if TimeInterval(rateAndTimeStampCurrencies.savedTimestamp).isExceed() {
+            return nil
+        }
+        return rateAndTimeStampCurrencies
+    }
+    
+    func deleteRateAndTimeStampCurrenciesWithTimestamp() {
+        UserDefaults.standard.set(nil, forKey: DownloadManager.downloadRateAndTimeStampCurrenciesKey)
     }
 }

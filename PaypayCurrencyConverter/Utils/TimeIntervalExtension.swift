@@ -9,12 +9,11 @@ import Foundation
 
 extension TimeInterval {
     
-    func isExceed(refreshedMinutes: Double=30) -> Bool {
+    func isExceed(refreshedSeconds: Double = 30 * 60) -> Bool {
         let date = Date(timeIntervalSince1970: self)
-        var timeInterval = date.timeIntervalSinceNow
-        timeInterval = -timeInterval
-        
-        if timeInterval > refreshedMinutes * 60 {
+        var passedTimeInterval = date.timeIntervalSinceNow
+        passedTimeInterval = TimeInterval(-Int(passedTimeInterval))
+        if passedTimeInterval > refreshedSeconds || passedTimeInterval == refreshedSeconds {
             return true
         }
         return false

@@ -19,7 +19,7 @@ class DisplayCurrenciesVCViewModel {
     
     func fetchRateAndTimeStampCurrencies() {
         // case1: rateAndTimeStampCurrencies in UserDefault -> get rateAndTimeStampCurrencies from UserDefault
-        if let rateAndTimeStampCurrencies = DownloadManager.shared.getRateAndTimeStampCurrencies() {
+        if let rateAndTimeStampCurrencies = DownloadManager.shared.getRateAndTimeStampCurrenciesWithTimestamp() {
             let displayCurrencies = makeDisplayCurrencies(currenciesRelativeWithUSDRate: rateAndTimeStampCurrencies.relativeWithUSDRates, amountCurrencyAbbreName: amountCurrency.abbreName)
             self.bindableDisplayCurrencies.value = displayCurrencies
             return
@@ -58,7 +58,7 @@ class DisplayCurrenciesVCViewModel {
     }
     
     fileprivate func makeRateAndTimeStampCurrencies(currenciesRelativeWithUSDRate: [String: Float]) -> RateAndTimeStampCurrencies {
-        var rateAndTimeStampCurrencies = RateAndTimeStampCurrencies(timeStamp: Date().timeIntervalSince1970)
+        var rateAndTimeStampCurrencies = RateAndTimeStampCurrencies(savedTimestamp: Date().timeIntervalSince1970)
         for (abbreName, rate) in currenciesRelativeWithUSDRate {
             rateAndTimeStampCurrencies.relativeWithUSDRates[abbreName] = rate
         }
