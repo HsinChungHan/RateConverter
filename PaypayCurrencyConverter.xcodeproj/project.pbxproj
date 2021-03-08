@@ -41,6 +41,8 @@
 		D19D834125F4F76D0074588C /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D834025F4F76D0074588C /* DownloadManager.swift */; };
 		D19D836E25F5429D0074588C /* ExchangeCurrencyFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D836D25F5429D0074588C /* ExchangeCurrencyFlowViewController.swift */; };
 		D19D837925F546680074588C /* ExchangeCurrencyFlowVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D837825F546680074588C /* ExchangeCurrencyFlowVCViewModel.swift */; };
+		D19D838425F54D910074588C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D838325F54D910074588C /* StringExtension.swift */; };
+		D19D838925F60F1C0074588C /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D838825F60F1C0074588C /* TimeIntervalExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		D19D834025F4F76D0074588C /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		D19D836D25F5429D0074588C /* ExchangeCurrencyFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCurrencyFlowViewController.swift; sourceTree = "<group>"; };
 		D19D837825F546680074588C /* ExchangeCurrencyFlowVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCurrencyFlowVCViewModel.swift; sourceTree = "<group>"; };
+		D19D838325F54D910074588C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		D19D838825F60F1C0074588C /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		DA29EDBEF510C845FD321460 /* Pods-PaypayCurrencyConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaypayCurrencyConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-PaypayCurrencyConverterUITests/Pods-PaypayCurrencyConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E48826A35E9E4D36811B8CA6 /* Pods_PaypayCurrencyConverterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaypayCurrencyConverterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -255,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				D19D828A25F3D2640074588C /* Bindable.swift */,
+				D19D838825F60F1C0074588C /* TimeIntervalExtension.swift */,
+				D19D838325F54D910074588C /* StringExtension.swift */,
 				D19D829825F3E6D20074588C /* SnapKitWithUIViewExtension.swift */,
 			);
 			path = Utils;
@@ -618,8 +624,10 @@
 				D19D831025F4B3A30074588C /* Calculator.swift in Sources */,
 				D19D827525F3A2F70074588C /* RateAndTimeStampCurrencies.swift in Sources */,
 				D19D82DC25F497640074588C /* DisplayCurrenciesViewController.swift in Sources */,
+				D19D838425F54D910074588C /* StringExtension.swift in Sources */,
 				D19D824125F39ADB0074588C /* APIResponseCurrencies.swift in Sources */,
 				D19D82BC25F491A40074588C /* ExchangeCurrencyVCWithCurrenciesPickerViewProtocol.swift in Sources */,
+				D19D838925F60F1C0074588C /* TimeIntervalExtension.swift in Sources */,
 				D19D828B25F3D2640074588C /* Bindable.swift in Sources */,
 				D19D828125F3D19E0074588C /* ExchangeCurrencyViewController.swift in Sources */,
 				D19D81C525F3838D0074588C /* AppDelegate.swift in Sources */,

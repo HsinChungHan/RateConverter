@@ -13,15 +13,16 @@ protocol CurrenciesPickerViewDataSource: AnyObject {
 }
 
 protocol CurrenciesPickerViewDelegate: AnyObject {
+    
     func currenciesPickerViewDidSelectRow(_ currenciesPickerView: CurrenciesPickerView, selectedRow: Int, selectedCurrency: Currency)
 }
 
 class CurrenciesPickerView: UIView {
     
-    weak var currenciesPickerViewDataSource: CurrenciesPickerViewDataSource?
-    weak var currenciesPickerViewDelegate: CurrenciesPickerViewDelegate?
+    fileprivate weak var currenciesPickerViewDataSource: CurrenciesPickerViewDataSource?
+    fileprivate weak var currenciesPickerViewDelegate: CurrenciesPickerViewDelegate?
     
-    lazy var pickerView = makePickerView()
+    fileprivate lazy var pickerView = makePickerView()
     
     init(currenciesPickerViewDataSource: CurrenciesPickerViewDataSource, currenciesPickerViewDelegate: CurrenciesPickerViewDelegate) {
         self.currenciesPickerViewDataSource = currenciesPickerViewDataSource
@@ -38,7 +39,7 @@ class CurrenciesPickerView: UIView {
 
 extension CurrenciesPickerView {
     
-    func makePickerView() -> UIPickerView {
+    fileprivate func makePickerView() -> UIPickerView {
         let pickerView = UIPickerView()
         pickerView.dataSource = self
         pickerView.delegate = self

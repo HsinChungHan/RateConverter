@@ -31,9 +31,7 @@ class DisplayCurrenciesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let dataSource = dataSource else { return }
-        vm = DisplayCurrenciesVCViewModel(amountCurrency: dataSource.displayCurrenciesViewControllerAmountCurrency(self))
-        vm?.fetchRateAndTimeStampCurrencies()
+        setupViewModel()
         registerTableViewCell()
         setupLayout()
         bindBindableDisplayCurrencies()
@@ -42,6 +40,10 @@ class DisplayCurrenciesViewController: UIViewController {
 
 extension DisplayCurrenciesViewController {
     
+    fileprivate func registerTableViewCell() {
+        tableView.register(DisplayCurrencyCell.self, forCellReuseIdentifier: DisplayCurrencyCell.cellId)
+    }
+    
     fileprivate func makeTableView() -> UITableView {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -49,23 +51,27 @@ extension DisplayCurrenciesViewController {
         return tableView
     }
     
-    fileprivate func registerTableViewCell() {
-        tableView.register(DisplayCurrencyCell.self, forCellReuseIdentifier: DisplayCurrencyCell.cellId)
-    }
-    
     fileprivate func setupLayout() {
         view.addSubview(tableView)
         tableView.fillSuperView()
     }
     
-    func bindBindableDisplayCurrencies() {
+    fileprivate func setupViewModel() {
+        guard let dataSource = dataSource else { return }
+        vm = DisplayCurrenciesVCViewModel(amountCurrency: dataSource.displayCurrenciesViewControllerAmountCurrency(self))
+        vm?.fetchRateAndTimeStampCurrencies()
+    }
+    
+    fileprivate func bindBindableDisplayCurrencies() {
         vm?.bindableDisplayCurrencies.bind(observer: {[weak self] (displayCurrencies) in
             self?.tableView.reloadData()
         })
     }
 }
 
+// - MARK: UITableViewProtocol
 extension DisplayCurrenciesViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard
             let vm = vm,

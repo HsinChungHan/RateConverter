@@ -28,6 +28,7 @@ protocol RequestType {
 }
 
 extension RequestType {
+    
     var scheme: String {
         return "http"
     }

@@ -17,34 +17,30 @@ class DisplayCurrenciesVCViewModel {
     
     let bindableDisplayCurrencies = Bindable<[DisplayCurrency]>.init(value: nil)
     
-    // case1: rateAndTimeStampCurrencies in UserDefault -> get rateAndTimeStampCurrencies from UserDefault
-    // case2: rateAndTimeStampCurrencies is not in UserDefault -> get rateAndTimeStampCurrencies from API and save into UserDefault
     func fetchRateAndTimeStampCurrencies() {
-        guard let rateAndTimeStampCurrencies = DownloadManager.shared.getRateAndTimeStampCurrencies() else {
-            CurrencyAPIService.shared.getAllExchangeRatesRelateWithUSD { [weak self] (responseUSDRates) in
-                guard let self = self else { return }
-                
-                var currenciesRelativeWithUSDRate = [String:Float]()
-                
-                for (key, value) in responseUSDRates.currenciesRate {
-                    // -TODO: Not safe, "USDUSD" => ""; "XYUSDZ" => "XYZ"
-                    let abbreName = key.replacingOccurrences(of: responseUSDRates.source, with: "")
-                    currenciesRelativeWithUSDRate[abbreName] = value
-                }
-                
-                let displayCurrencies = self.makeDisplayCurrencies(currenciesRelativeWithUSDRate: currenciesRelativeWithUSDRate, amountCurrencyAbbreName: self.amountCurrency.abbreName)
-                
-                let rateAndTimeStampCurrencies = self.makeRateAndTimeStampCurrencies(currenciesRelativeWithUSDRate: currenciesRelativeWithUSDRate)
-                
-                self.bindableDisplayCurrencies.value = displayCurrencies
-                DownloadManager.shared.saveRateAndTimeStampCurrencies(rateAndTimeStampCurrencies: rateAndTimeStampCurrencies)
-            } errorHandler: { _ in
-                print("🚨 Failed to get allExchange rates relate with USD!")
-            }
+        // case1: rateAndTimeStampCurrencies in UserDefault -> get rateAndTimeStampCurrencies from UserDefault
+        if let rateAndTimeStampCurrencies = DownloadManager.shared.getRateAndTimeStampCurrencies() {
+            let displayCurrencies = makeDisplayCurrencies(currenciesRelativeWithUSDRate: rateAndTimeStampCurrencies.relativeWithUSDRates, amountCurrencyAbbreName: amountCurrency.abbreName)
+            self.bindableDisplayCurrencies.value = displayCurrencies
             return
         }
-        let displayCurrencies = makeDisplayCurrencies(currenciesRelativeWithUSDRate: rateAndTimeStampCurrencies.relativeWithUSDRates, amountCurrencyAbbreName: amountCurrency.abbreName)
-        self.bindableDisplayCurrencies.value = displayCurrencies
+        
+        // case2: rateAndTimeStampCurrencies is not in UserDefault -> get rateAndTimeStampCurrencies from API and save into UserDefault
+        CurrencyAPIService.shared.getAllExchangeRatesRelateWithUSD { [weak self] (responseUSDRates) in
+            guard let self = self else { return }
+            
+            let currenciesRelativeWithUSDRate = self.makeCurrenciesRelativeWithUSDRate(responseUSDRates: responseUSDRates)
+            
+            let displayCurrencies = self.makeDisplayCurrencies(currenciesRelativeWithUSDRate: currenciesRelativeWithUSDRate, amountCurrencyAbbreName: self.amountCurrency.abbreName)
+            
+            let rateAndTimeStampCurrencies = self.makeRateAndTimeStampCurrencies(currenciesRelativeWithUSDRate: currenciesRelativeWithUSDRate)
+            
+            self.bindableDisplayCurrencies.value = displayCurrencies
+            
+            DownloadManager.shared.saveRateAndTimeStampCurrencies(rateAndTimeStampCurrencies: rateAndTimeStampCurrencies)
+        } errorHandler: { _ in
+            print("🚨 Failed to get allExchange rates relate with USD!")
+        }
     }
     
     fileprivate func makeDisplayCurrencies(currenciesRelativeWithUSDRate: [String: Float], amountCurrencyAbbreName: String) -> [DisplayCurrency] {
@@ -62,11 +58,19 @@ class DisplayCurrenciesVCViewModel {
     }
     
     fileprivate func makeRateAndTimeStampCurrencies(currenciesRelativeWithUSDRate: [String: Float]) -> RateAndTimeStampCurrencies {
-        let currentTimestamp = Date().timeIntervalSince1970
-        var rateAndTimeStampCurrencies = RateAndTimeStampCurrencies(timeStamp: currentTimestamp)
+        var rateAndTimeStampCurrencies = RateAndTimeStampCurrencies(timeStamp: Date().timeIntervalSince1970)
         for (abbreName, rate) in currenciesRelativeWithUSDRate {
             rateAndTimeStampCurrencies.relativeWithUSDRates[abbreName] = rate
         }
         return rateAndTimeStampCurrencies
+    }
+    
+    fileprivate func makeCurrenciesRelativeWithUSDRate(responseUSDRates: APIResponseUSDRates) -> [String: Float] {
+        var currenciesRelativeWithUSDRate = [String:Float]()
+        for (key, rate) in responseUSDRates.currenciesRate {
+            let abbreName = key.toAbbreName(source: responseUSDRates.source)
+            currenciesRelativeWithUSDRate[abbreName] = rate
+        }
+        return currenciesRelativeWithUSDRate
     }
 }

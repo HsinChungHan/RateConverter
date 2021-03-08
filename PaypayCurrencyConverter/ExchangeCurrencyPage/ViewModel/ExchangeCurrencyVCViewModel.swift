@@ -35,23 +35,24 @@ class ExchangeCurrencyVCViewModel {
     
     func fetchAllCurrencies() {
         // case1: currencies in UserDefault -> get currencies from UserDefault
-        // case2: currencies is not in UserDefault -> get currencies from API and save into UserDefault
-        guard let currencies = DownloadManager.shared.getCurrencies() else {
-            CurrencyAPIService.shared.getAllCurrencies { [weak self] (apiResponseCurrencies) in
-                guard let self = self else { return }
-                let apiCurrencies = apiResponseCurrencies.currencies
-                var currencies = [Currency]()
-                for (abbreName, name) in apiCurrencies {
-                    let currency = Currency(name: name, abbreName: abbreName)
-                    currencies.append(currency)
-                }
-                self.allCurrencies.value = currencies
-                DownloadManager.shared.saveCurrencies(currencies: currencies)
-            } errorHandler: { _ in
-                print("🚨 Failed to get all currencies in ExchangeCurrencyVCViewModel!")
-            }
+        if let currencies = DownloadManager.shared.getCurrencies() {
+            self.allCurrencies.value = currencies
             return
         }
-        self.allCurrencies.value = currencies
+        
+        // case2: currencies is not in UserDefault -> get currencies from API and save into UserDefault
+        CurrencyAPIService.shared.getAllCurrencies { [weak self] (apiResponseCurrencies) in
+            guard let self = self else { return }
+            let apiCurrencies = apiResponseCurrencies.currencies
+            var currencies = [Currency]()
+            for (abbreName, name) in apiCurrencies {
+                let currency = Currency(name: name, abbreName: abbreName)
+                currencies.append(currency)
+            }
+            self.allCurrencies.value = currencies
+            DownloadManager.shared.saveCurrencies(currencies: currencies)
+        } errorHandler: { _ in
+            print("🚨 Failed to get all currencies in ExchangeCurrencyVCViewModel!")
+        }
     }
 }
