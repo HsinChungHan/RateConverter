@@ -15,4 +15,8 @@ extension String {
         let abbreName = replacingOccurrences(of: source, with: "", options: .literal, range: Range(range, in: self))
         return abbreName
     }
+    
+    func currencyType() -> CurrencyType {
+        return self == "USD" ? .USD : .NonUSD
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  TestCalculator.swift
+//  TestDisplayCurrency.swift
 //  PaypayCurrencyConverterTests
 //
 //  Created by Chung Han Hsin on 2021/3/8.
@@ -8,7 +8,8 @@
 import XCTest
 @testable import PaypayCurrencyConverter
 
-class TestCalculator: XCTestCase {
+class TestDisplayCurrency: XCTestCase {
+    
     // Case1: from currency is USD, USD -> TWD
     var amountUSDCurrency: AmountCurrency!
     var fromUSDRateCurrency: RateCurrency!
@@ -41,8 +42,15 @@ class TestCalculator: XCTestCase {
         super.tearDown()
     }
     
-    func testCalculate() {
-        XCTAssertEqual(Calculator.calculate(amountCurrency: amountUSDCurrency, formRateCurrency: fromUSDRateCurrency, toRateCurrency: toTWDRateCurrency), 2824.0)
-        XCTAssertEqual(Calculator.calculate(amountCurrency: amountJPYCurrency, formRateCurrency: fromJPYRateCurrency, toRateCurrency: toTWDRateCurrency), 26.006079)
+    func testDisplayCurrency() {
+        // Case1: from currency is USD, USD -> TWD
+        let displayUSDTypeCurrency = DisplayCurrency(amountCurrency: amountUSDCurrency, fromRateCurrency: fromUSDRateCurrency, toRateCurrency: toTWDRateCurrency)
+        XCTAssertEqual(displayUSDTypeCurrency.abbreName, "TWD")
+        XCTAssertEqual(displayUSDTypeCurrency.exchangedAmount, 2824.0)
+        
+        // Case2: from currency is not USD, JPN -> TWD
+        let displayNotUSDTypeCurrency = DisplayCurrency(amountCurrency: amountJPYCurrency, fromRateCurrency: fromJPYRateCurrency, toRateCurrency: toTWDRateCurrency)
+        XCTAssertEqual(displayNotUSDTypeCurrency.abbreName, "TWD")
+        XCTAssertEqual(displayNotUSDTypeCurrency.exchangedAmount, 26.006079)
     }
 }

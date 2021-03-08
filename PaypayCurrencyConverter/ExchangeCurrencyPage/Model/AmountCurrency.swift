@@ -7,16 +7,17 @@
 
 import Foundation
 
+enum CurrencyType {
+    case USD
+    case NonUSD
+}
+
 struct AmountCurrency {
     
-    enum CurrencyType {
-        case USD
-        case NonUSD
-    }
+    let abbreName: String
+    let amount: Float
     
-    var abbreName: String
-    var amount: Float
     var currencyType: CurrencyType {
-        return abbreName == "USD" ? .USD : .NonUSD
+        return abbreName.currencyType()
     }
 }
