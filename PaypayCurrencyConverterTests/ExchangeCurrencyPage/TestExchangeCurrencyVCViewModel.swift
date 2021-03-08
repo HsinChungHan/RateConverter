@@ -35,6 +35,8 @@ class TestExchangeCurrencyVCViewModel: XCTestCase {
         selectedCurrency = nil
         mockViewModel = nil
         savedCurrencies = nil
+        DownloadManager.shared.deleteCurrencies()
+        DownloadManager.shared.deleteRateAndTimestampCurrencies()
         super.tearDown()
     }
     
