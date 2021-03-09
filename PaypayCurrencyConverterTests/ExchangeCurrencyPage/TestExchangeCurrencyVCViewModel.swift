@@ -97,23 +97,3 @@ class TestExchangeCurrencyVCViewModel: XCTestCase {
         return ExchangeCurrencyVCViewModel(service: MockCurrencyAPIService(responseCurrencies: responseCurrencies, responseUSDRates: responseUSDRates))
     }
 }
-
-class MockCurrencyAPIService: CurrencyAPIServiceProtocol {
-    
-    var responseCurrencies: APIResponseCurrencies
-    var responseUSDRates: APIResponseUSDRates
-    
-    init(responseCurrencies: APIResponseCurrencies, responseUSDRates: APIResponseUSDRates) {
-        self.responseCurrencies = responseCurrencies
-        self.responseUSDRates = responseUSDRates
-    }
-    
-    
-    func getAllCurrencies(completionHandler: @escaping (APIResponseCurrencies) -> Void, errorHandler: @escaping (CurrencyAPIServiceError) -> Void) {
-        completionHandler(responseCurrencies)
-    }
-    
-    func getAllExchangeRatesRelateWithUSD(completionHandler: @escaping (APIResponseUSDRates) -> Void, errorHandler: @escaping (CurrencyAPIServiceError) -> Void) {
-        completionHandler(responseUSDRates)
-    }
-}
