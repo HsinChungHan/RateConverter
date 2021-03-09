@@ -16,7 +16,7 @@ class DisplayCurrenciesViewController: UIViewController {
     
     weak var dataSource: DisplayCurrenciesViewControllerDataSource?
     
-    fileprivate lazy var tableView = makeTableView()
+    lazy var tableView = makeTableView()
     
     var vm: DisplayCurrenciesVCViewModel?
     
