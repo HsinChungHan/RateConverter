@@ -46,7 +46,7 @@ extension ExchangeCurrencyViewController {
     }
     
     @objc func pressExchangeCurrencyButton(sender: UIButton) {
-        flowDelegate?.exchangeCurrencyViewControllerFlowDelegateGoToDisplayCurrenciesViewModel(self, amountCurrency: viewModel.amountCurrency)
+        flowDelegate?.exchangeCurrencyViewControllerFlowDelegateGoToDisplayCurrenciesViewController(self, amountCurrency: viewModel.amountCurrency)
     }
     
     func makeCurrenciesPickeView() -> CurrenciesPickerView {

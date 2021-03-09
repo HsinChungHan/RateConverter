@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 
 protocol ExchangeCurrencyViewControllerFlowDelegate: AnyObject {
-    func exchangeCurrencyViewControllerFlowDelegateGoToDisplayCurrenciesViewModel(_ exchangeCurrencyViewController: ExchangeCurrencyViewController, amountCurrency: AmountCurrency)
+    
+    func exchangeCurrencyViewControllerFlowDelegateGoToDisplayCurrenciesViewController(_ exchangeCurrencyViewController: ExchangeCurrencyViewController, amountCurrency: AmountCurrency)
 }
 
 class ExchangeCurrencyViewController: UIViewController {
@@ -23,8 +24,7 @@ class ExchangeCurrencyViewController: UIViewController {
     lazy var exchangeCurrencyButton = makeExchangeCurrencyButton()
     lazy var currenciesPickeView = makeCurrenciesPickeView()
     
-    init(flowDelegate: ExchangeCurrencyViewControllerFlowDelegate) {
-        self.flowDelegate = flowDelegate
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     

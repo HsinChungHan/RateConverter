@@ -20,7 +20,7 @@ class TestDisplayCurrenciesVC: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        viewController = DisplayCurrenciesViewController(displayCurrenciesViewControllerDataSource: self)
+        viewController = DisplayCurrenciesViewController(dataSource: self)
         viewController.viewDidLoad()
         viewModel = viewController.vm
         amountCurrency = AmountCurrency(abbreName: "USD", amount: 100)
