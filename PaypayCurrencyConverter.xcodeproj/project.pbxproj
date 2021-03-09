@@ -58,6 +58,8 @@
 		D19D844B25F679790074588C /* TestDisplayCurrenciesVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D844A25F679790074588C /* TestDisplayCurrenciesVCViewModel.swift */; };
 		D19D846725F682920074588C /* PaypayCurrencyConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D846625F682920074588C /* PaypayCurrencyConverterUITests.swift */; };
 		D19D846F25F682A50074588C /* PaypayCurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D846E25F682A50074588C /* PaypayCurrencyConverterTests.swift */; };
+		D19D848E25F71DBD0074588C /* TestExchangeCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D848D25F71DBD0074588C /* TestExchangeCurrencyVC.swift */; };
+		D19D84A025F730020074588C /* TestDisplayCurrenciesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D849F25F730020074588C /* TestDisplayCurrenciesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,8 @@
 		D19D844A25F679790074588C /* TestDisplayCurrenciesVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDisplayCurrenciesVCViewModel.swift; sourceTree = "<group>"; };
 		D19D846625F682920074588C /* PaypayCurrencyConverterUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaypayCurrencyConverterUITests.swift; sourceTree = "<group>"; };
 		D19D846E25F682A50074588C /* PaypayCurrencyConverterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaypayCurrencyConverterTests.swift; sourceTree = SOURCE_ROOT; };
+		D19D848D25F71DBD0074588C /* TestExchangeCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExchangeCurrencyVC.swift; sourceTree = "<group>"; };
+		D19D849F25F730020074588C /* TestDisplayCurrenciesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDisplayCurrenciesVC.swift; sourceTree = "<group>"; };
 		DA29EDBEF510C845FD321460 /* Pods-PaypayCurrencyConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaypayCurrencyConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-PaypayCurrencyConverterUITests/Pods-PaypayCurrencyConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E48826A35E9E4D36811B8CA6 /* Pods_PaypayCurrencyConverterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaypayCurrencyConverterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -212,11 +216,11 @@
 				D19D81C425F3838D0074588C /* AppDelegate.swift */,
 				D19D81C625F3838D0074588C /* SceneDelegate.swift */,
 				D19D83C025F62F0B0074588C /* Config.plist */,
-				D19D848025F6832F0074588C /* NetworkLayer */,
+				D19D848025F6832F0074588C /* Networking */,
 				D19D821A25F387750074588C /* APIService */,
 				D19D847C25F683210074588C /* Module */,
+				D19D823725F39A470074588C /* Model */,
 				D19D829425F3E6B80074588C /* Utils */,
-				D19D823725F39A470074588C /* Models */,
 				D19D81CD25F3838F0074588C /* Assets.xcassets */,
 				D19D81CF25F3838F0074588C /* LaunchScreen.storyboard */,
 				D19D81D225F3838F0074588C /* Info.plist */,
@@ -228,8 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				D19D846E25F682A50074588C /* PaypayCurrencyConverterTests.swift */,
-				D19D844925F6794C0074588C /* DisplayCurrencisVCViewModel */,
 				D19D843725F65EBE0074588C /* ExchangeCurrencyPage */,
+				D19D844925F6794C0074588C /* DisplayCurrencisVCViewModel */,
 				D19D842E25F654DA0074588C /* DownloadManager */,
 				D19D83F625F634A80074588C /* TestModels */,
 				D19D83E225F632FD0074588C /* TestUtils */,
@@ -256,7 +260,7 @@
 			path = APIService;
 			sourceTree = "<group>";
 		};
-		D19D823725F39A470074588C /* Models */ = {
+		D19D823725F39A470074588C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				D19D825D25F3A0290074588C /* APIResponseModels */,
@@ -264,7 +268,7 @@
 				D19D827425F3A2F70074588C /* RateAndTimeStampCurrencies.swift */,
 				D19D82E825F49B1C0074588C /* RateCurrency.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D19D825D25F3A0290074588C /* APIResponseModels */ = {
@@ -500,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				D19D843825F65F000074588C /* TestExchangeCurrencyVCViewModel.swift */,
+				D19D848D25F71DBD0074588C /* TestExchangeCurrencyVC.swift */,
 			);
 			path = ExchangeCurrencyPage;
 			sourceTree = "<group>";
@@ -508,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				D19D844A25F679790074588C /* TestDisplayCurrenciesVCViewModel.swift */,
+				D19D849F25F730020074588C /* TestDisplayCurrenciesVC.swift */,
 			);
 			path = DisplayCurrencisVCViewModel;
 			sourceTree = "<group>";
@@ -525,13 +531,21 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
-		D19D848025F6832F0074588C /* NetworkLayer */ = {
+		D19D848025F6832F0074588C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				D19D822025F388340074588C /* RequestType.swift */,
+				D19D849825F71E990074588C /* Request */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D19D849825F71E990074588C /* Request */ = {
+			isa = PBXGroup;
+			children = (
 				D19D822525F389E00074588C /* CurrencyRequest.swift */,
 			);
-			path = NetworkLayer;
+			path = Request;
 			sourceTree = "<group>";
 		};
 		FF3FD698CDC7CF32048A6EAD /* Frameworks */ = {
@@ -829,10 +843,12 @@
 				D19D843025F6552A0074588C /* TestDownloadManager.swift in Sources */,
 				D19D83A725F622870074588C /* TestStringExtension.swift in Sources */,
 				D19D844B25F679790074588C /* TestDisplayCurrenciesVCViewModel.swift in Sources */,
+				D19D84A025F730020074588C /* TestDisplayCurrenciesVC.swift in Sources */,
 				D19D840125F635690074588C /* APIResponseCurrencies.swift in Sources */,
 				D19D841225F638990074588C /* TestAPIResponseUSDRates.swift in Sources */,
 				D19D83CF25F631620074588C /* TestCurrencyAPIServcie.swift in Sources */,
 				D19D83A225F616F30074588C /* TestTimeIntervalExtension.swift in Sources */,
+				D19D848E25F71DBD0074588C /* TestExchangeCurrencyVC.swift in Sources */,
 				D19D83C725F62FC90074588C /* TestAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
