@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol DisplayCurrenciesViewControllerFlowDelegate: AnyObject {
+    
+    func displayCurrenciesViewControllerDismiss(_ displayCurrenciesViewController: DisplayCurrenciesViewController)
+}
+
 protocol DisplayCurrenciesViewControllerDataSource: AnyObject {
     
     func displayCurrenciesViewControllerAmountCurrency(_ displayCurrenciesViewController: DisplayCurrenciesViewController) -> AmountCurrency
@@ -15,13 +20,14 @@ protocol DisplayCurrenciesViewControllerDataSource: AnyObject {
 class DisplayCurrenciesViewController: UIViewController {
     
     weak var dataSource: DisplayCurrenciesViewControllerDataSource?
+    weak var flowDelegate: DisplayCurrenciesViewControllerFlowDelegate?
     
     lazy var tableView = makeTableView()
     
     var vm: DisplayCurrenciesVCViewModel?
     
-    init(displayCurrenciesViewControllerDataSource: DisplayCurrenciesViewControllerDataSource) {
-        dataSource = displayCurrenciesViewControllerDataSource
+    init(dataSource: DisplayCurrenciesViewControllerDataSource) {
+        self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,6 +41,11 @@ class DisplayCurrenciesViewController: UIViewController {
         registerTableViewCell()
         setupLayout()
         bindBindableDisplayCurrencies()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        flowDelegate?.displayCurrenciesViewControllerDismiss(self)
     }
 }
 
