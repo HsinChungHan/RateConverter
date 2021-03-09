@@ -12,7 +12,11 @@ extension ExchangeCurrencyViewController {
     func makeInputAmountTextfiled() -> UITextField {
         let textField = UITextField()
         textField.placeholder = "Please type amount here!"
+        textField.returnKeyType = .done
+        textField.keyboardType = .numbersAndPunctuation
+        textField.clearButtonMode = .whileEditing
         textField.addTarget(self, action: #selector(inputAmountTextfieldDidChange(sender:)), for: .editingChanged)
+        textField.delegate = self
         return textField
     }
     
@@ -88,5 +92,13 @@ extension ExchangeCurrencyViewController {
             $0.right.equalTo(view.snp.right)
             $0.bottom.equalTo(view.snp.bottom)
         }
+    }
+}
+
+extension ExchangeCurrencyViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
     }
 }
