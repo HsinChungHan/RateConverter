@@ -22,7 +22,7 @@ class TestCoordinator: XCTestCase {
         flowVC = ExchangeCurrencyFlowViewController()
         flowVC.viewDidAppear(false)
         flowVM = flowVC.viewModel
-        exchangeCurrencyVC = ExchangeCurrencyViewController()
+        exchangeCurrencyVC = flowVM.subViewControllers[0] as! ExchangeCurrencyViewController
         exchangeCurrencyVM = exchangeCurrencyVC.viewModel
         currency = Currency(name: "Taiwan Dollar", abbreName: "TWD")
         exchangeCurrencyVM.selectedCurrency.value = currency
