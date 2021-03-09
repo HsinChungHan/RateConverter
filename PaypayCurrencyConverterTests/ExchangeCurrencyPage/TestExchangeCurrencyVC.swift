@@ -22,7 +22,7 @@ class TestExchangeCurrencyVC: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        viewController = ExchangeCurrencyViewController(flowDelegate: self)
+        viewController = ExchangeCurrencyViewController()
         viewModel = viewController.viewModel
         viewController.viewDidLoad()
         currency = Currency(name: currencyName, abbreName: currencyAbbreName)
@@ -94,12 +94,5 @@ class TestExchangeCurrencyVC: XCTestCase {
         
         viewModel.allCurrencies.value = currencies
         XCTAssertEqual(viewController.currenciesPickeView.rowsNum, 1)
-    }
-}
-
-extension TestExchangeCurrencyVC: ExchangeCurrencyViewControllerFlowDelegate {
-    
-    func exchangeCurrencyViewControllerFlowDelegateGoToDisplayCurrenciesViewModel(_ exchangeCurrencyViewController: ExchangeCurrencyViewController, amountCurrency: AmountCurrency) {
-        
     }
 }
