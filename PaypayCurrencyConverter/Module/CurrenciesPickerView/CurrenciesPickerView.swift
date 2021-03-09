@@ -24,6 +24,10 @@ class CurrenciesPickerView: UIView {
     
     fileprivate lazy var pickerView = makePickerView()
     
+    var rowsNum: Int {
+        return pickerView.numberOfRows(inComponent: 0)
+    }
+    
     init(currenciesPickerViewDataSource: CurrenciesPickerViewDataSource, currenciesPickerViewDelegate: CurrenciesPickerViewDelegate) {
         self.currenciesPickerViewDataSource = currenciesPickerViewDataSource
         self.currenciesPickerViewDelegate = currenciesPickerViewDelegate
